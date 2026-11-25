@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.vite/
+*.local
+.env
+.env.*
+!.env.example
+GUIA-ESTUDO.md
+AGENTS.md
+*.bak
+*.tmp
+.cache/
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
