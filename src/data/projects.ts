@@ -130,7 +130,7 @@ export const projects: Project[] = [
     limitations:
       "A versão web requer WebAssembly e WebGL. O canvas escala proporcionalmente e os controles ficam menores em telas estreitas. A taxa de quadros limita a velocidade efetiva. A implementação de Counting Sort aceita valores inteiros de 0 a 350.",
     development:
-      "A implementação original em C e Raylib foi desenvolvida manualmente. A ampliação do catálogo de algoritmos, as melhorias de interface e métricas, os testes e a exportação web foram realizados posteriormente com assistência de IA.",
+      "Desenvolvi o visualizador manualmente em C e Raylib. Usei IA apenas para adaptá-lo para a web e testá-lo.",
     source: "https://github.com/liphecodez/visualizador-de-algoritimos",
     demo: {
       kind: "web",
@@ -181,7 +181,7 @@ export const projects: Project[] = [
     limitations:
       "A versão web requer WebAssembly, WebGL 2 e teclado para movimentação. O progresso dura apenas durante a sessão. O jogo mantém a proporção 16:9 e o áudio depende de interação com o jogo.",
     development:
-      "A versão original foi desenvolvida manualmente em Godot e GDScript. Correções, ampliação das fases, testes e exportação web foram realizados posteriormente com assistência de IA.",
+      "Desenvolvi o jogo manualmente em Godot e GDScript. Usei IA apenas para adaptá-lo para a web e testá-lo.",
     source: "https://github.com/liphecodez/lab-rats",
     demo: {
       kind: "web",
