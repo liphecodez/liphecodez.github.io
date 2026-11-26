@@ -17,12 +17,18 @@ export type Project = {
   limitations: string;
   development: string;
   source?: string;
-  demo: { kind: "media" | "web"; note: string; url?: string };
+  demo:
+    | { kind: "media"; note: string }
+    | {
+        kind: "web";
+        url: string;
+        engine: "raylib" | "godot";
+        instructions: string[];
+      };
   media: Media[];
 };
 
 // Fontes: informações fornecidas pelo autor e repositórios públicos indicados abaixo.
-// URLs de demonstração e mídias ficam ausentes até existirem exportações reais revisadas.
 export const projects: Project[] = [
   {
     slug: "nci",
@@ -92,27 +98,28 @@ export const projects: Project[] = [
     category: "Projeto pessoal · C / Raylib",
     short: "Algoritmos de ordenação, passo a passo.",
     intro:
-      "Aplicação gráfica para visualização interativa de algoritmos de ordenação, desenvolvida manualmente em C com Raylib.",
+      "Visualizador interativo de 12 algoritmos de ordenação em C e Raylib, com execução passo a passo no navegador.",
     objective:
       "Tornar o funcionamento dos algoritmos de ordenação observável, relacionando a execução incremental às mudanças exibidas em tempo real.",
-    technologies: ["C", "Raylib", "Git"],
+    technologies: ["C99", "Raylib 5.5", "CMake", "Emscripten", "WebAssembly", "WebGL"],
     features: [
-      "Visualização interativa de algoritmos de ordenação.",
-      "Execução incremental e renderização em tempo real.",
-      "Controle de velocidade da visualização.",
+      "Bubble, Selection, Insertion, Cocktail Shaker, Merge, Quick, Heap, Counting, Radix, Gnome, Shell e Comb Sort.",
+      "Pausa, avanço de um passo e reinício. A troca de algoritmo preserva a entrada para facilitar comparações.",
+      "Geração de dados aleatórios com 3 a 95 elementos e intervalo configurável de 0,01 a 1 segundo por passo.",
+      "Descrição e complexidades de cada algoritmo, contadores de comparações e movimentações e destaques de leitura, escrita e conclusão.",
     ],
     architecture: [
       {
         title: "Algoritmos e dados",
-        text: "Algoritmos de ordenação, estruturas de dados e structs representam os elementos e seu estado durante a execução.",
+        text: "Cada algoritmo mantém uma máquina de estado em seu módulo C. O Quick Sort usa partição de Lomuto com pilha explícita e o Merge Sort intercala faixas de baixo para cima.",
       },
       {
         title: "Execução incremental",
-        text: "O avanço dos algoritmos é coordenado com o estado da aplicação e a velocidade selecionada.",
+        text: "O desktop e o navegador compartilham a função de quadro. Na web, o loop do Emscripten devolve o controle ao navegador entre quadros.",
       },
       {
-        title: "Renderização",
-        text: "Raylib fornece a base gráfica para exibir as mudanças em tempo real. A modularização organiza as responsabilidades do programa em C.",
+        title: "Métricas de ordenação",
+        text: "Cada escrita no vetor principal ou auxiliar conta como uma movimentação. Counting e Radix usam frequências e distribuição por dígito, respectivamente, e registram zero comparações entre elementos.",
       },
     ],
     contributions: [
@@ -121,12 +128,18 @@ export const projects: Project[] = [
       "Integração dos algoritmos com a renderização e o controle de velocidade.",
     ],
     limitations:
-      "A versão web ainda não está disponível. A futura exportação depende de compilação do projeto original com Emscripten e validação de compatibilidade no navegador.",
-    development: "Projeto pessoal desenvolvido manualmente em C e Raylib.",
+      "A versão web requer WebAssembly e WebGL. O canvas escala proporcionalmente e os controles ficam menores em telas estreitas. A taxa de quadros limita a velocidade efetiva. A implementação de Counting Sort aceita valores inteiros de 0 a 350.",
+    development:
+      "A implementação original em C e Raylib foi desenvolvida manualmente. A ampliação do catálogo de algoritmos, as melhorias de interface e métricas, os testes e a exportação web foram realizados posteriormente com assistência de IA.",
     source: "https://github.com/liphecodez/visualizador-de-algoritimos",
     demo: {
       kind: "web",
-      note: "A demonstração web aguarda a exportação real em WebAssembly via Emscripten. O código original em C será preservado.",
+      url: "https://liphecodez.github.io/visualizador-de-algoritimos/",
+      engine: "raylib",
+      instructions: [
+        "Selecione um algoritmo na barra lateral. Use os botões do visualizador para executar, pausar, avançar um passo, reiniciar ou gerar novos dados.",
+        "Clique no gráfico para dar foco ao teclado. Espaço pausa ou continua, → avança um passo e R reinicia com os mesmos dados.",
+      ],
     },
     media: [],
   },
@@ -136,28 +149,28 @@ export const projects: Project[] = [
     category: "Projeto pessoal · Godot / GDScript",
     short: "Um puzzle 2D de movimento e interação.",
     intro:
-      "Jogo de puzzle 2D desenvolvido manualmente em Godot e GDScript, baseado em movimentação direcionada e interação entre objetos.",
+      "Puzzle 2D em Godot e GDScript. Guie um rato por oito labirintos em que o movimento continua até encontrar uma parada ou um obstáculo.",
     objective:
       "Explorar desafios de lógica por meio de movimento em grade, obstáculos e objetos com comportamentos que se combinam ao longo das fases.",
-    technologies: ["Godot", "GDScript", "Git"],
+    technologies: ["Godot 4.7", "GDScript", "TileMapLayer", "WebAssembly", "WebGL 2"],
     features: [
-      "Movimentação baseada em grade e colisões.",
-      "Chaves e obstáculos coloridos.",
-      "Portais, inimigos, armadilhas e redirecionadores.",
-      "Progressão entre fases e gerenciamento de áudio.",
+      "Deslizamento em grade com paredes, pisos de parada e redirecionadores.",
+      "Portas coloridas que abrem após coletar todas as chaves da cor correspondente.",
+      "Espinhos letais quando atingidos de frente, portais que conservam a direção e uma patrulha na última fase.",
+      "Oito fases selecionáveis no menu, com pausa, reinício e avanço pela tela de vitória.",
     ],
     architecture: [
       {
         title: "Eventos e comunicação",
-        text: "Arquitetura orientada a eventos com signals para a comunicação entre os elementos do jogo.",
+        text: "Sinais de Area2D acionam efeitos de colisão. O autoload Events comunica a coleta de chaves às portas e os impactos à câmera.",
       },
       {
         title: "Estado e reutilização",
-        text: "Autoloads, gerenciamento de estado e componentes reutilizáveis apoiam a organização do projeto e a progressão entre fases.",
+        text: "Cenas reutilizáveis organizam as fases. GameManager mantém o catálogo, a fase ativa e os totais de chaves por cor. Os menus usam o estado de pausa da SceneTree.",
       },
       {
-        title: "Interações em 2D",
-        text: "Movimentação em grade, colisões e física 2D definem como o jogador interage com obstáculos e objetos. O áudio acompanha o estado do jogo.",
+        title: "Renderização e áudio",
+        text: "A exportação usa Godot 4.7.2, o renderizador GL Compatibility e execução sem threads. SoundPlayer gerencia música e efeitos sonoros e libera cada efeito ao receber o sinal de conclusão.",
       },
     ],
     contributions: [
@@ -166,13 +179,18 @@ export const projects: Project[] = [
       "Organização de eventos, componentes, estado e áudio.",
     ],
     limitations:
-      "A exportação web ainda não está disponível. Compatibilidade e desempenho no navegador serão verificados após a exportação real do Godot. GitHub Pages não permite configurar cabeçalhos arbitrários; uma exportação sem threads é a opção inicial a avaliar.",
+      "A versão web requer WebAssembly, WebGL 2 e teclado para movimentação. O progresso dura apenas durante a sessão. O jogo mantém a proporção 16:9 e o áudio depende de interação com o jogo.",
     development:
-      "Projeto pessoal desenvolvido manualmente em Godot e GDScript.",
+      "A versão original foi desenvolvida manualmente em Godot e GDScript. Correções, ampliação das fases, testes e exportação web foram realizados posteriormente com assistência de IA.",
     source: "https://github.com/liphecodez/lab-rats",
     demo: {
       kind: "web",
-      note: "A versão jogável no navegador será incorporada após a exportação real do Godot. Por enquanto, o projeto pode ser consultado no GitHub.",
+      url: "https://liphecodez.github.io/lab-rats/",
+      engine: "godot",
+      instructions: [
+        "Clique no jogo para dar foco ao teclado. Use o mouse para escolher Play ou Select level e navegar pelos menus.",
+        "Use as setas ou WASD para escolher uma direção quando o rato estiver parado. P ou Esc pausa ou retoma, R reinicia e Enter avança na tela de vitória ou volta ao menu após a última fase. F alterna a tela cheia com o jogo em foco.",
+      ],
     },
     media: [],
   },
