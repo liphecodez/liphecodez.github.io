@@ -2,6 +2,7 @@ import { useEffect, useRef } from "react";
 import { projects, type Project } from "./data/projects";
 import { ProjectGraphic } from "./components/ProjectGraphic";
 import { Demo } from "./components/Demo";
+import { DragonArtwork } from "./components/DragonArtwork";
 import { TerminalHeading } from "./components/TerminalHeading";
 import type { DemoControls } from "./components/InteractiveDemo";
 
@@ -78,24 +79,7 @@ function Home() {
             </a>
           </div>
         </div>
-        <div className="hero-aside">
-          <div className="orbit-art" aria-hidden="true">
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <div className="orbit orbit-three" />
-            <div className="orbit-axis axis-x" />
-            <div className="orbit-axis axis-y" />
-            <span className="orbit-center">
-              lf<span>.</span>
-            </span>
-            <span className="orbit-label">ideia → lógica → software</span>
-          </div>
-          <p className="mono text-muted">
-            DESENVOLVIMENTO DE SOFTWARE
-            <br />
-            <span className="text-accent">Aprendizado em prática.</span>
-          </p>
-        </div>
+        <DragonArtwork />
         <div className="hero-bottom">
           <span>Backend · Segurança · Escalabilidade</span>
           <span>
