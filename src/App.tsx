@@ -59,10 +59,10 @@ function Home() {
             Foco em <span>backend.</span>
           </h1>
           <p className="hero-description">
-            Estudo Análise e Desenvolvimento de Sistemas na Fatec e busco um
-            estágio em backend. Uso Python, Docker e bancos relacionais como
-            PostgreSQL para estudar como decisões de arquitetura afetam a
-            segurança, o desempenho e a capacidade de um sistema crescer.
+            Estudo Análise e Desenvolvimento de Sistemas na Fatec. Uso Python,
+            Docker e bancos relacionais como PostgreSQL para estudar como
+            decisões de arquitetura afetam a segurança, o desempenho e a
+            capacidade de um sistema crescer.
           </p>
           <div className="flex flex-wrap gap-3">
             <a className="button button-primary" href="#projetos">
@@ -284,10 +284,7 @@ function Home() {
             sobre software?
           </h2>
           <div>
-            <p className="text-muted">
-              Estou aberto a conversar sobre oportunidades de estágio em backend.
-            </p>
-            <div className="flex flex-wrap gap-3 mt-6">
+            <div className="flex flex-wrap gap-3">
               <a className="button button-primary" href={`mailto:${email}`}>
                 Enviar e-mail
               </a>
