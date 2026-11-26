@@ -15,7 +15,7 @@ export function ProjectGraphic({ variant, compact = false }: Props) {
               ? "LÓGICA / INTERAÇÃO"
               : "DADOS / ORDENAÇÃO"}
         </span>
-        <span>LB</span>
+        <span>LF</span>
       </div>
       {variant === "nci" ? (
         <div className="system-map">

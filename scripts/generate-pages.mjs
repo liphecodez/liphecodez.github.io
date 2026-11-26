@@ -13,7 +13,7 @@ const escapeHtml = (value) =>
 // Diretórios físicos permitem acesso direto e recarregamento no GitHub Pages.
 for (const project of projects) {
   const path = `/projetos/${project.slug}/`;
-  const title = escapeHtml(`${project.name} — Luis Bernardo`);
+  const title = escapeHtml(`${project.name} — Luis Felipe`);
   const description = escapeHtml(project.intro);
   const html = template
     .replace(/<title>.*?<\/title>/, `<title>${title}</title>`)
@@ -32,7 +32,7 @@ await writeFile(
   template
     .replace(
       /<title>.*?<\/title>/,
-      "<title>Página não encontrada — Luis Bernardo</title>",
+      "<title>Página não encontrada — Luis Felipe</title>",
     )
     .replace("</head>", '<meta name="robots" content="noindex" /></head>'),
 );

@@ -1,4 +1,4 @@
-# Luis Bernardo — Portfólio
+# Luis Felipe — Portfólio
 
 Portfólio estático em português, com React, TypeScript, Vite e Tailwind CSS. Publicação prevista em **https://liphecodez.github.io/**. Sem backend, banco de dados ou serviços de rastreamento.
 
@@ -88,16 +88,7 @@ A configuração local dos workflows não ativa a proteção no GitHub. Essa eta
 
 ## Capturas e vídeos do NCI
 
-Após revisar autorização e privacidade, adicione arquivos reais a `public/media/nci/` e cadastre-os no campo `media` do projeto:
-
-```ts
-media: [
-  { kind: 'image', src: '/media/nci/atividades.webp', description: 'Tela de atividades com dados de demonstração revisados.' },
-  { kind: 'video', src: '/media/nci/apresentacao.mp4', description: 'Apresentação do módulo de frequência.' },
-]
-```
-
-Esses são exemplos de configuração; os arquivos ainda não existem. As imagens têm carregamento adiado e os vídeos usam `preload="none"`. Não publique dados institucionais, nomes de participantes, credenciais, configurações privadas ou capturas com informações sensíveis. Tudo em `public/` fica acessível na internet.
+A galeria do NCI usa capturas com dados fictícios. Os originais ficam em `prints/`, pasta local ignorada pelo Git, e as versões WebP publicadas ficam em `public/media/nci/`. A ordem, os nomes e as legendas estão em `src/data/projects.ts`. As imagens têm carregamento adiado e podem ser abertas em tamanho original em outra aba.
 
 ## Demonstrações web
 
@@ -116,4 +107,4 @@ O componente `InteractiveDemo` só monta o iframe após clicar em **Iniciar demo
 - [Tailwind com Vite](https://tailwindcss.com/docs/installation/using-vite)
 - [Workflows do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
-As informações sobre autoria, contribuições e NCI foram fornecidas por Luis Bernardo. O guia de estudo é local e ignorado pelo Git.
+As informações sobre autoria, contribuições e NCI foram fornecidas por Luis Felipe. O guia de estudo é local e ignorado pelo Git.

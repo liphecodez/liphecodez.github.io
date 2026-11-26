@@ -1,5 +1,6 @@
 import type { Ref } from "react";
 import type { Project } from "../data/projects";
+import { TerminalHeading } from "./TerminalHeading";
 import { InteractiveDemo, type DemoControls } from "./InteractiveDemo";
 
 export function Demo({
@@ -13,7 +14,9 @@ export function Demo({
     <section id="demonstracao" className="detail-section">
       <div className="section-heading">
         <span className="eyebrow">Veja o projeto</span>
-        <h2>Demonstração</h2>
+        <TerminalHeading
+          text={project.demo.kind === "media" ? "Telas do sistema" : "Demonstração"}
+        />
       </div>
       {project.demo.kind === "web" ? (
         <InteractiveDemo
@@ -22,6 +25,8 @@ export function Demo({
           source={project.source}
           controlsRef={controlsRef}
         />
+      ) : project.media.length > 0 ? (
+        <p>{project.demo.note}</p>
       ) : (
         <div className="demo-placeholder">
           <span className="demo-symbol" aria-hidden="true">
@@ -46,7 +51,21 @@ export function Demo({
           {project.media.map((media) => (
             <figure key={media.src}>
               {media.kind === "image" ? (
-                <img src={media.src} alt={media.description} loading="lazy" />
+                <a
+                  href={media.src}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label={`Abrir captura em tamanho original. ${media.description}`}
+                >
+                  <img
+                    src={media.src}
+                    alt={media.description}
+                    width={media.width}
+                    height={media.height}
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </a>
               ) : (
                 <video
                   controls

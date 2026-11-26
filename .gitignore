@@ -7,6 +7,7 @@ dist/
 !.env.example
 GUIA-ESTUDO.md
 AGENTS.md
+/prints/
 *.bak
 *.tmp
 .cache/

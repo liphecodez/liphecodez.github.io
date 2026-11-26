@@ -2,9 +2,14 @@ import { useEffect, useRef } from "react";
 import { projects, type Project } from "./data/projects";
 import { ProjectGraphic } from "./components/ProjectGraphic";
 import { Demo } from "./components/Demo";
+import { LissajousArtwork } from "./components/LissajousArtwork";
+import { TerminalHeading } from "./components/TerminalHeading";
 import type { DemoControls } from "./components/InteractiveDemo";
 
 const github = "https://github.com/liphecodez";
+const linkedin = "https://www.linkedin.com/in/luis-felipe-lima-bernardo-43691b281/";
+const email = "luis.felipe.lima.bernardo@gmail.com";
+const heroIntro = ["Olá?", "hello?", "Hello world!"] as const;
 const projectPath = (project: Project) => `/projetos/${project.slug}/`;
 
 function Tags({ items }: { items: string[] }) {
@@ -23,9 +28,9 @@ function Header({ home }: { home: boolean }) {
       <a
         className="wordmark"
         href="/"
-        aria-label="Luis Bernardo, página inicial"
+        aria-label="Luis Felipe, página inicial"
       >
-        lb<span>.</span>
+        lf<span>.</span>
       </a>
       <nav aria-label="Navegação principal">
         <a href={home ? "#projetos" : "/#projetos"}>Projetos</a>
@@ -51,17 +56,19 @@ function Home() {
       <section className="hero shell" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="eyebrow">
-            <span className="small-line" /> Luis Bernardo · Portfólio
+            <span className="small-line" /> Luis Felipe · Portfólio
           </p>
-          <h1 id="hero-title">
-            Software com
-            <br />
-            lógica, contexto
-            <br />e <span>intenção.</span>
-          </h1>
+          <TerminalHeading
+            as="h1"
+            id="hero-title"
+            text="Olá, eu sou o Luis Felipe!"
+            intro={heroIntro}
+          />
           <p className="hero-description">
-            Estudante de Análise e Desenvolvimento de Sistemas na Fatec. Exploro
-            a construção de software, dos algoritmos às aplicações.
+            Estudo Análise e Desenvolvimento de Sistemas na Fatec, com foco em
+            backend. Uso Python, Docker e PostgreSQL para estudar como decisões
+            de arquitetura afetam a segurança, o desempenho e a capacidade de
+            um sistema crescer.
           </p>
           <div className="flex flex-wrap gap-3">
             <a className="button button-primary" href="#projetos">
@@ -72,26 +79,9 @@ function Home() {
             </a>
           </div>
         </div>
-        <div className="hero-aside">
-          <div className="orbit-art" aria-hidden="true">
-            <div className="orbit orbit-one" />
-            <div className="orbit orbit-two" />
-            <div className="orbit orbit-three" />
-            <div className="orbit-axis axis-x" />
-            <div className="orbit-axis axis-y" />
-            <span className="orbit-center">
-              lb<span>.</span>
-            </span>
-            <span className="orbit-label">ideia → lógica → software</span>
-          </div>
-          <p className="mono text-muted">
-            DESENVOLVIMENTO DE SOFTWARE
-            <br />
-            <span className="text-accent">Aprendizado em prática.</span>
-          </p>
-        </div>
+        <LissajousArtwork />
         <div className="hero-bottom">
-          <span>Software · Algoritmos · Engenharia · IA</span>
+          <span>Backend · Segurança · Escalabilidade</span>
           <span>
             Conheça o trabalho abaixo <span aria-hidden="true">↓</span>
           </span>
@@ -105,9 +95,7 @@ function Home() {
         <div className="section-heading section-heading-row">
           <div>
             <p className="eyebrow">Da teoria à implementação</p>
-            <h2 id="projects-title">
-              Projetos selecionados<span className="text-accent">.</span>
-            </h2>
+            <TerminalHeading id="projects-title" text="Projetos selecionados." />
           </div>
           <p>
             Contextos diferentes.{" "}
@@ -175,33 +163,30 @@ function Home() {
       <section id="sobre" className="about-section shell">
         <div>
           <p className="eyebrow">Sobre mim</p>
-          <h2>
-            Entender a lógica.
-            <br />
-            <span className="text-muted">Construir a solução.</span>
-          </h2>
+          <TerminalHeading text="Entender a lógica. Construir a solução." />
         </div>
         <div className="about-copy">
           <p>
-            Sou Luis Bernardo, estudante de Análise e Desenvolvimento de
-            Sistemas na Fatec, com interesse em desenvolvimento de software,
-            algoritmos, engenharia de software e inteligência artificial.
+            Quando encontro um conceito novo, procuro um problema pequeno em
+            que possa aplicá-lo. Assim consigo estudar a teoria, implementar
+            uma solução e observar como ela se comporta na prática.
           </p>
           <p className="text-muted">
-            Minha prática passa por sistemas web, programação em C e
-            desenvolvimento de jogos. Neste portfólio, apresento o contexto de
-            cada projeto, as escolhas técnicas e o que desenvolvi
-            individualmente.
+            Nos meus projetos, dou atenção ao levantamento de requisitos e às
+            boas práticas de engenharia desde as primeiras decisões de
+            arquitetura. Quero me aprofundar em backend e, no futuro, me
+            dedicar também à ciência de dados.
           </p>
           <p className="text-muted">
-            Busco uma oportunidade de estágio para aprofundar esses
-            conhecimentos e contribuir com uma equipe de desenvolvimento.
+            Também gosto de matemática e física. Um dos próximos conceitos
+            que quero estudar é telemetria. Pretendo experimentar como
+            aplicá-la em um sistema.
           </p>
           <div className="interests">
             <span className="eyebrow">Áreas de interesse</span>
             <p>
-              Desenvolvimento de software / Algoritmos / Engenharia de software
-              / Inteligência artificial
+              Desenvolvimento de software / Segurança / Arquitetura de
+              sistemas / Ciência de dados
             </p>
           </div>
         </div>
@@ -209,7 +194,7 @@ function Home() {
       <section className="skills-section shell" aria-labelledby="skills-title">
         <div className="section-heading">
           <p className="eyebrow">Conhecimentos em prática</p>
-          <h2 id="skills-title">O código como evidência.</h2>
+          <TerminalHeading id="skills-title" text="O código como evidência." />
           <p className="text-muted mt-4 max-w-xl">
             Competências relacionadas ao trabalho nos projetos. Cada link leva
             ao contexto em que foram aplicadas.
@@ -244,31 +229,73 @@ function Home() {
             </a>
           ))}
         </div>
-      </section>
-      <section id="contato" className="contact-section shell">
-        <p className="eyebrow text-accent">Contato</p>
-        <div className="contact-layout">
-          <h2>
-            Vamos conversar
-            <br />
-            sobre software?
-          </h2>
-          <div>
-            <p className="text-muted">
-              Meu código e meus projetos estão no GitHub.
-              <br />
-              Esse é meu canal público por aqui.
-            </p>
-            <a
-              className="button button-primary mt-6"
-              href={github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Encontrar no GitHub
-            </a>
-            <p className="mono text-muted mt-4">@liphecodez</p>
+        <section className="mt-10" aria-labelledby="study-projects-title">
+          <h3 id="study-projects-title">Projetos de estudo</h3>
+          <div className="secondary-projects">
+            <article className="secondary-project architecture-list">
+              <div>
+                <h4 className="mb-2">Sistema de academia · Segurança de APIs</h4>
+                <p>
+                  Implementei autorização por recurso na rota de faturas. A API
+                  verifica se a fatura pertence ao usuário autenticado antes
+                  de liberar o acesso. Testei abuso de requisições, apliquei
+                  limites de frequência e experimentei um fluxo no pipeline
+                  para alertar sobre vulnerabilidades e manter as dependências
+                  atualizadas.
+                </p>
+              </div>
+            </article>
+            <article className="secondary-project architecture-list">
+              <div>
+                <h4 className="mb-2">Sistema de mercado · Desempenho</h4>
+                <p>
+                  Simulei consultas em massa ao banco e usei Redis para
+                  melhorar o desempenho. Para resolver timeouts durante o
+                  processamento de arquivos pesados, movi o trabalho para uma
+                  fila em segundo plano com notificação de conclusão.
+                </p>
+              </div>
+            </article>
           </div>
+          <p className="text-muted mt-4">
+            Esses exemplos mostram parte do que desenvolvi nos dois projetos.
+          </p>
+        </section>
+      </section>
+      <section
+        id="contato"
+        className="contact-section shell"
+        aria-labelledby="contact-title"
+      >
+        <div className="contact-layout">
+          <div>
+            <p className="eyebrow text-accent">Contato</p>
+            <TerminalHeading
+              id="contact-title"
+              className="mt-3"
+              text="Vamos conversar?"
+            />
+          </div>
+          <ul className="contact-links">
+            <li className="contact-email">
+              <a href={`mailto:${email}`}>
+                <span className="eyebrow text-accent">E-mail profissional</span>
+                <span>{email}</span>
+              </a>
+            </li>
+            <li>
+              <a href={linkedin} target="_blank" rel="noreferrer">
+                <span>LinkedIn</span>
+                <span className="text-muted">Luis Felipe</span>
+              </a>
+            </li>
+            <li>
+              <a href={github} target="_blank" rel="noreferrer">
+                <span>GitHub</span>
+                <span className="text-muted">@liphecodez</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
     </>
@@ -287,10 +314,7 @@ function ProjectPage({ project }: { project: Project }) {
       </a>
       <header className="project-heading">
         <p className="eyebrow text-accent">{project.category}</p>
-        <h1>
-          {project.name}
-          <span className="text-accent">.</span>
-        </h1>
+        <TerminalHeading as="h1" text={`${project.name}.`} />
         <p className="project-lead">{project.intro}</p>
         <Tags items={project.technologies} />
         <div className="flex flex-wrap gap-3 mt-7">
@@ -309,7 +333,7 @@ function ProjectPage({ project }: { project: Project }) {
               }
             }}
           >
-            Ver demonstração
+            {project.demo.kind === "media" ? "Ver capturas" : "Ver demonstração"}
           </a>
           {project.source && (
             <a
@@ -332,18 +356,21 @@ function ProjectPage({ project }: { project: Project }) {
             <a href="#funcionalidades">Funcionalidades</a>
             <a href="#arquitetura">Arquitetura e conceitos</a>
             <a href="#contribuicoes">Minha contribuição</a>
-            <a href="#demonstracao">Demonstração</a>
+            <a href="#demonstracao">
+              {project.demo.kind === "media" ? "Telas do sistema" : "Demonstração"}
+            </a>
             <a href="#limitacoes">Limitações</a>
           </nav>
         </aside>
         <div className="detail-content">
           <section id="objetivo" className="detail-section">
             <p className="eyebrow">Contexto</p>
-            <h2>Problema e objetivo</h2>
+            <TerminalHeading text="Problema e objetivo" />
             <p>{project.objective}</p>
+            {project.context && <p className="mt-4">{project.context}</p>}
             {project.slug === "nci" && (
               <div className="scope-block">
-                <p className="eyebrow">Dimensão do escopo documentado</p>
+                <p className="eyebrow">Escopo do MVP</p>
                 <dl className="scope-stats">
                   <div>
                     <dt>50</dt>
@@ -359,15 +386,16 @@ function ProjectPage({ project }: { project: Project }) {
                   </div>
                 </dl>
                 <p className="text-muted text-sm">
-                  Números da especificação. Não são métricas de qualidade nem
-                  certificação de implementação integral.
+                  A equipe implementou todos os requisitos funcionais e não
+                  funcionais e todas as regras de negócio do MVP. Os números
+                  descrevem a dimensão desse escopo.
                 </p>
               </div>
             )}
           </section>
           <section id="funcionalidades" className="detail-section">
             <p className="eyebrow">O que o projeto contempla</p>
-            <h2>Funcionalidades</h2>
+            <TerminalHeading text="Funcionalidades" />
             <ul className="feature-list">
               {project.features.map((feature) => (
                 <li key={feature}>{feature}</li>
@@ -376,7 +404,7 @@ function ProjectPage({ project }: { project: Project }) {
           </section>
           <section id="arquitetura" className="detail-section">
             <p className="eyebrow">Como foi pensado</p>
-            <h2>Arquitetura e conceitos</h2>
+            <TerminalHeading text="Arquitetura e conceitos" />
             <div className="architecture-list">
               {project.architecture.map((item) => (
                 <div key={item.title}>
@@ -388,7 +416,7 @@ function ProjectPage({ project }: { project: Project }) {
           </section>
           <section id="contribuicoes" className="detail-section">
             <p className="eyebrow">Autoria e participação</p>
-            <h2>Minha contribuição</h2>
+            <TerminalHeading text="Minha contribuição" />
             <ul className="feature-list">
               {project.contributions.map((item) => (
                 <li key={item}>{item}</li>
@@ -399,8 +427,9 @@ function ProjectPage({ project }: { project: Project }) {
           <Demo project={project} controlsRef={demoControls} />
           <section id="limitacoes" className="detail-section">
             <p className="eyebrow">Estado da apresentação</p>
-            <h2>Limitações e próximos passos</h2>
+            <TerminalHeading text="Limitações e próximos passos" />
             <p>{project.limitations}</p>
+            {project.nextSteps && <p className="mt-4">{project.nextSteps}</p>}
             {!project.source && (
               <p className="mt-5 text-muted">
                 Código-fonte não disponibilizado publicamente neste portfólio.
@@ -435,10 +464,10 @@ export default function App() {
   const home = path === "" || path === "/index.html";
   useEffect(() => {
     if (!home && !project)
-      document.title = "Página não encontrada — Luis Bernardo";
+      document.title = "Página não encontrada — Luis Felipe";
     // O HTML gerado já contém os metadados de cada projeto; este efeito também cobre o dev server.
     if (project) {
-      document.title = `${project.name} — Luis Bernardo`;
+      document.title = `${project.name} — Luis Felipe`;
       document
         .querySelector('meta[name="description"]')
         ?.setAttribute("content", project.intro);
@@ -459,7 +488,7 @@ export default function App() {
       ) : (
         <main id="conteudo" className="shell not-found">
           <p className="eyebrow">Erro 404</p>
-          <h1>Página não encontrada.</h1>
+          <TerminalHeading as="h1" text="Página não encontrada." />
           <p className="text-muted">
             O endereço pode ter mudado. Os projetos continuam na página inicial.
           </p>
@@ -468,15 +497,6 @@ export default function App() {
           </a>
         </main>
       )}
-      <footer className="site-footer shell">
-        <a className="footer-name" href="/">
-          Luis Bernardo<span className="text-accent">.</span>
-        </a>
-        <p>Desenvolvido com React e TypeScript.</p>
-        <a href={github} target="_blank" rel="noreferrer">
-          GitHub
-        </a>
-      </footer>
     </>
   );
 }

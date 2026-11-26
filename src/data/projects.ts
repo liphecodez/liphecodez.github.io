@@ -2,6 +2,8 @@ export type Media = {
   kind: "image" | "video";
   src: string;
   description: string;
+  width?: number;
+  height?: number;
 };
 export type Project = {
   slug: string;
@@ -10,11 +12,13 @@ export type Project = {
   short: string;
   intro: string;
   objective: string;
+  context?: string;
   technologies: string[];
   features: string[];
   architecture: { title: string; text: string }[];
   contributions: string[];
   limitations: string;
+  nextSteps?: string;
   development: string;
   source?: string;
   demo:
@@ -28,6 +32,35 @@ export type Project = {
   media: Media[];
 };
 
+const nciCaptures = [
+  ["acesso", "Tela de entrada do sistema institucional."],
+  ["painel-inicial", "Painel inicial com acesso aos módulos de gestão e frequência."],
+  [
+    "gestao-de-participantes",
+    "Ficha de participante com dados cadastrais, situação social e histórico de entradas e saídas.",
+  ],
+  [
+    "gestao-de-atividades",
+    "Cadastro e listagem de atividades com categorias, horários e inscrições.",
+  ],
+  [
+    "registro-diario",
+    "Registro diário de presença com seleção da atividade, horário e participantes inscritos.",
+  ],
+  [
+    "frequencia-mensal",
+    "Consulta mensal com totais de presença e ausência e detalhamento por atividade.",
+  ],
+  [
+    "indicadores-fmr",
+    "Indicadores do FMR por faixa etária e desligamentos por motivo.",
+  ],
+  [
+    "gestao-de-colaboradores",
+    "Gestão de colaboradores com busca, perfis e situação das contas.",
+  ],
+] as const;
+
 // Fontes: informações fornecidas pelo autor e repositórios públicos indicados abaixo.
 export const projects: Project[] = [
   {
@@ -38,7 +71,9 @@ export const projects: Project[] = [
     intro:
       "Sistema de Gestão Institucional desenvolvido em equipe para o NCI Idade Dourada de Pinheiros, como Projeto Integrador acadêmico.",
     objective:
-      "Organizar participantes, atividades e frequência, integrando essas informações ao processamento de indicadores mensais do FMR.",
+      "O FMR é um formulário mensal obrigatório para a instituição. Antes do sistema, era difícil preenchê-lo manualmente. O objetivo do projeto foi reunir os registros de participantes, atividades e frequência e usá-los para gerar os indicadores que facilitam o preenchimento do formulário.",
+    context:
+      "Uma mudança na metodologia do Projeto Integrador exigiu que nossa equipe trocasse de comunidade e recomeçasse o levantamento. Com cerca de dois meses até a entrega, entrevistamos a nova instituição e levantamos requisitos funcionais, não funcionais e regras de negócio. Restaram cerca de duas semanas para implementar. Como já tínhamos priorizado os problemas e planejado a arquitetura com base nas entrevistas, conseguimos entregar enquanto aprendíamos Django, Alpine.js, Bootstrap e a publicar o sistema.",
     technologies: [
       "Python",
       "Django",
@@ -59,6 +94,10 @@ export const projects: Project[] = [
       "Relatórios e integração entre os módulos institucionais.",
     ],
     architecture: [
+      {
+        title: "Segurança e auditoria",
+        text: "O NCI é uma instituição parceira do governo e lida com dados sensíveis. A equipe tratou a proteção das informações e a possibilidade de auditar operações como prioridades desde o levantamento de requisitos até a implementação.",
+      },
       {
         title: "Organização modular",
         text: "Módulos com responsabilidades distintas e integração entre participantes, atividades, frequência e indicadores.",
@@ -83,14 +122,20 @@ export const projects: Project[] = [
       "Integração dessas funcionalidades com os demais módulos.",
     ],
     limitations:
-      "Este portfólio apresenta o escopo e as contribuições declaradas pelo autor. Não há demonstração pública nem código-fonte disponibilizado aqui. As capturas e os vídeos dependem de revisão para não expor dados institucionais ou pessoais.",
+      "A galeria apresenta a interface do sistema com dados fictícios. O acesso pelo portfólio se limita às capturas.",
     development:
       "Desenvolvimento acadêmico em equipe, com assistência de inteligência artificial.",
     demo: {
       kind: "media",
-      note: "Capturas e vídeos reais serão adicionados após revisão de privacidade. Nenhuma tela do sistema foi simulada.",
+      note: "As capturas mostram a interface do NCI preenchida com dados fictícios. Selecione uma imagem para abri-la em tamanho original em outra aba.",
     },
-    media: [],
+    media: nciCaptures.map(([name, description]) => ({
+      kind: "image",
+      src: `/media/nci/${name}.webp`,
+      description,
+      width: 1920,
+      height: 1080,
+    })),
   },
   {
     slug: "algorithm-visualizer",
@@ -100,7 +145,7 @@ export const projects: Project[] = [
     intro:
       "Visualizador interativo de 12 algoritmos de ordenação em C e Raylib, com execução passo a passo no navegador.",
     objective:
-      "Tornar o funcionamento dos algoritmos de ordenação observável, relacionando a execução incremental às mudanças exibidas em tempo real.",
+      "Quando aprendi algoritmos de ordenação, tive dificuldade para acompanhar o que acontecia em cada etapa. Criei o visualizador para consolidar o que aprendi e ajudar outras pessoas a entender esses algoritmos, mostrando passo a passo como cada comparação e movimentação afeta o conjunto de dados.",
     technologies: ["C99", "Raylib 5.5", "CMake", "Emscripten", "WebAssembly", "WebGL"],
     features: [
       "Bubble, Selection, Insertion, Cocktail Shaker, Merge, Quick, Heap, Counting, Radix, Gnome, Shell e Comb Sort.",
@@ -149,28 +194,28 @@ export const projects: Project[] = [
     category: "Projeto pessoal · Godot / GDScript",
     short: "Um puzzle 2D de movimento e interação.",
     intro:
-      "Puzzle 2D em Godot e GDScript. Guie um rato por oito labirintos em que o movimento continua até encontrar uma parada ou um obstáculo.",
+      "Puzzle 2D em Godot e GDScript. Guie um rato por labirintos em que ele desliza até encontrar uma parada ou um obstáculo.",
     objective:
-      "Explorar desafios de lógica por meio de movimento em grade, obstáculos e objetos com comportamentos que se combinam ao longo das fases.",
-    technologies: ["Godot 4.7", "GDScript", "TileMapLayer", "WebAssembly", "WebGL 2"],
+      "Criei o Lab Rats para me divertir desenvolvendo e jogando e para oferecer a outras pessoas um puzzle divertido. A ideia é experimentar trajetos e descobrir como combinar obstáculos e objetos para chegar à saída.",
+    technologies: ["Godot 4.7", "GDScript", "WebAssembly", "WebGL 2"],
     features: [
       "Deslizamento em grade com paredes, pisos de parada e redirecionadores.",
       "Portas coloridas que abrem após coletar todas as chaves da cor correspondente.",
-      "Espinhos letais quando atingidos de frente, portais que conservam a direção e uma patrulha na última fase.",
-      "Oito fases selecionáveis no menu, com pausa, reinício e avanço pela tela de vitória.",
+      "Espinhos letais quando atingidos de frente, portais que conservam a direção e um inimigo que patrulha o labirinto.",
+      "Seleção de fases no menu, com pausa, reinício e avanço pela tela de vitória.",
     ],
     architecture: [
       {
-        title: "Eventos e comunicação",
-        text: "Sinais de Area2D acionam efeitos de colisão. O autoload Events comunica a coleta de chaves às portas e os impactos à câmera.",
+        title: "Eventos e gatilhos",
+        text: "A lógica do jogo é orientada a eventos. Gatilhos no cenário acionam interações, e o autoload Events distribui acontecimentos da partida, como a coleta de chaves e os impactos que afetam a câmera.",
       },
       {
         title: "Estado e reutilização",
-        text: "Cenas reutilizáveis organizam as fases. GameManager mantém o catálogo, a fase ativa e os totais de chaves por cor. Os menus usam o estado de pausa da SceneTree.",
+        text: "As fases são montadas com cenas e componentes reutilizáveis. Um gerenciador acompanha a fase atual e os itens coletados, enquanto os menus controlam a pausa, o reinício e a progressão.",
       },
       {
         title: "Renderização e áudio",
-        text: "A exportação usa Godot 4.7.2, o renderizador GL Compatibility e execução sem threads. SoundPlayer gerencia música e efeitos sonoros e libera cada efeito ao receber o sinal de conclusão.",
+        text: "A versão web usa o renderizador de compatibilidade do Godot. Um gerenciador de áudio concentra a reprodução de música e efeitos durante as partidas.",
       },
     ],
     contributions: [
@@ -180,6 +225,8 @@ export const projects: Project[] = [
     ],
     limitations:
       "A versão web requer WebAssembly, WebGL 2 e teclado para movimentação. O progresso dura apenas durante a sessão. O jogo mantém a proporção 16:9 e o áudio depende de interação com o jogo.",
+    nextSteps:
+      "Quero criar mais fases e já comecei a desenvolver uma ferramenta para criar e editar níveis dentro do próprio jogo.",
     development:
       "Desenvolvi o jogo manualmente em Godot e GDScript. Usei IA apenas para adaptá-lo para a web e testá-lo.",
     source: "https://github.com/liphecodez/lab-rats",
@@ -189,7 +236,7 @@ export const projects: Project[] = [
       engine: "godot",
       instructions: [
         "Clique no jogo para dar foco ao teclado. Use o mouse para escolher Play ou Select level e navegar pelos menus.",
-        "Use as setas ou WASD para escolher uma direção quando o rato estiver parado. P ou Esc pausa ou retoma, R reinicia e Enter avança na tela de vitória ou volta ao menu após a última fase. F alterna a tela cheia com o jogo em foco.",
+        "Use as setas ou WASD para escolher uma direção quando o rato estiver parado. P ou Esc pausa ou retoma, R reinicia e Enter avança na tela de vitória ou volta ao menu ao concluir o jogo. F alterna a tela cheia com o jogo em foco.",
       ],
     },
     media: [],
