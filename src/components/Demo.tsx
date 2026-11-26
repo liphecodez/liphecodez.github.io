@@ -1,7 +1,14 @@
+import type { Ref } from "react";
 import type { Project } from "../data/projects";
-import { InteractiveDemo } from "./InteractiveDemo";
+import { InteractiveDemo, type DemoControls } from "./InteractiveDemo";
 
-export function Demo({ project }: { project: Project }) {
+export function Demo({
+  project,
+  controlsRef,
+}: {
+  project: Project;
+  controlsRef?: Ref<DemoControls>;
+}) {
   return (
     <section id="demonstracao" className="detail-section">
       <div className="section-heading">
@@ -13,6 +20,7 @@ export function Demo({ project }: { project: Project }) {
           name={project.name}
           demo={project.demo}
           source={project.source}
+          controlsRef={controlsRef}
         />
       ) : (
         <div className="demo-placeholder">
