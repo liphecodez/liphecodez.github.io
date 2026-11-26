@@ -39,8 +39,6 @@ body::before {
     repeating-linear-gradient(9deg, #35ff73 0 1px, transparent 1px 44px),
     repeating-linear-gradient(99deg, #35ff73 0 1px, transparent 1px 44px);
   mask-image:
-    radial-gradient(ellipse clamp(155px, 32vw, 510px) 220px at 62% 12%, #000 12%, transparent 100%),
-    radial-gradient(ellipse clamp(100px, 19vw, 295px) 125px at 47% 9%, #000b 18%, transparent 100%),
     radial-gradient(ellipse clamp(65px, 14vw, 215px) 175px at 77% 16%, #000c, transparent 100%),
     radial-gradient(ellipse clamp(110px, 26vw, 395px) 165px at 99% 30%, #000e 14%, transparent 100%),
     radial-gradient(ellipse clamp(60px, 13vw, 180px) 95px at 92% 36%, #000a, transparent 100%),
@@ -49,7 +47,6 @@ body::before {
     radial-gradient(ellipse clamp(42px, 7vw, 90px) 95px at 3% 39%, #0009, transparent 100%),
     radial-gradient(ellipse clamp(30px, 5vw, 66px) 43px at 88% 48%, #000a 10%, transparent 100%),
     radial-gradient(ellipse clamp(24px, 3vw, 46px) 30px at 93% 46%, #0009, transparent 100%),
-    radial-gradient(ellipse clamp(142px, 32vw, 505px) 198px at 42% 67%, #000 16%, transparent 100%),
     radial-gradient(ellipse clamp(74px, 15vw, 225px) 167px at 28% 72%, #000b, transparent 100%),
     radial-gradient(ellipse clamp(90px, 16vw, 220px) 102px at 63% 64%, #0009, transparent 100%),
     radial-gradient(ellipse clamp(25px, 5vw, 66px) 46px at 94% 71%, #000a 10%, transparent 100%),
