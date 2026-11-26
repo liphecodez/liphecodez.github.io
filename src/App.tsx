@@ -274,6 +274,9 @@ function Home() {
               </div>
             </article>
           </div>
+          <p className="text-muted mt-4">
+            Esses exemplos mostram parte do que desenvolvi nos dois projetos.
+          </p>
         </section>
       </section>
       <section id="contato" className="contact-section shell">
