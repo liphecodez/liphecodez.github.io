@@ -99,16 +99,14 @@ media: [
 
 Esses são exemplos de configuração; os arquivos ainda não existem. As imagens têm carregamento adiado e os vídeos usam `preload="none"`. Não publique dados institucionais, nomes de participantes, credenciais, configurações privadas ou capturas com informações sensíveis. Tudo em `public/` fica acessível na internet.
 
-## Demonstrações web futuras
+## Demonstrações web
 
-Não há jogo ou visualizador reimplementado neste site. As ilustrações são diagramas conceituais explicitamente identificados.
+As páginas de projeto incorporam as exportações publicadas nos respectivos GitHub Pages.
 
-Depois de exportar o código original, coloque todos os arquivos da exportação em `public/demos/algorithm-visualizer/` ou `public/demos/lab-rats/`, preservando seus caminhos relativos. Cadastre, por exemplo, `url: '/demos/lab-rats/index.html'` dentro de `demo`. Faça isso somente quando a exportação existir e tiver sido testada.
+- [Algorithm Visualizer](https://liphecodez.github.io/visualizador-de-algoritimos/)
+- [Lab Rats](https://liphecodez.github.io/lab-rats/)
 
-O componente `Demo` só monta o iframe após clicar em **Iniciar demonstração**. Oferece tela cheia, abertura em outra aba, encerramento e acesso alternativo ao repositório. Nada de WebAssembly é carregado na página inicial.
-
-- Visualizador: exportar C/Raylib com Emscripten em uma etapa posterior.
-- Lab Rats: usar uma exportação web real do Godot; avaliar exportação sem threads, pois GitHub Pages não fornece configuração de cabeçalhos COOP/COEP. Validar áudio, controles e compatibilidade móvel na exportação real.
+O componente `InteractiveDemo` só monta o iframe após clicar em **Iniciar demonstração**. **Encerrar demonstração** remove o iframe e encerra a sessão. Clique no canvas para usar os atalhos. Em uma prévia local, o próprio iframe exibe o progresso e os erros de inicialização do WebAssembly após a navegação, pois seu conteúdo tem outra origem.
 
 ## Referências
 

@@ -90,8 +90,8 @@ assert.equal(
 );
 for (const project of projects) {
   assert.match(project.slug, /^[a-z0-9]+(?:-[a-z0-9]+)*$/);
-  // Uma URL só pode ser habilitada se a exportação real estiver presente no build.
-  if (project.demo.url?.startsWith("/"))
+  // Exportações locais precisam estar presentes no build.
+  if (project.demo.kind === "web" && project.demo.url.startsWith("/"))
     await access(`dist${project.demo.url}`);
   for (const media of project.media)
     if (media.src.startsWith("/")) await access(`dist${media.src}`);
