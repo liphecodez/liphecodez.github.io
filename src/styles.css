@@ -39,20 +39,20 @@ body::before {
     repeating-linear-gradient(9deg, #35ff73 0 1px, transparent 1px 44px),
     repeating-linear-gradient(99deg, #35ff73 0 1px, transparent 1px 44px);
   mask-image:
-    radial-gradient(ellipse clamp(155px, 32vw, 510px) 220px at 92% 14%, #000 12%, transparent 100%),
-    radial-gradient(ellipse clamp(100px, 19vw, 295px) 125px at 75% 19%, #000b 18%, transparent 100%),
-    radial-gradient(ellipse clamp(65px, 14vw, 215px) 175px at 98% 24%, #000c, transparent 100%),
-    radial-gradient(ellipse clamp(80px, 15vw, 220px) 95px at 2% 34%, #000 15%, transparent 100%),
-    radial-gradient(ellipse clamp(70px, 13vw, 190px) 60px at 14% 37%, #000b 12%, transparent 100%),
+    radial-gradient(ellipse clamp(155px, 32vw, 510px) 220px at 62% 12%, #000 12%, transparent 100%),
+    radial-gradient(ellipse clamp(100px, 19vw, 295px) 125px at 47% 9%, #000b 18%, transparent 100%),
+    radial-gradient(ellipse clamp(65px, 14vw, 215px) 175px at 77% 16%, #000c, transparent 100%),
+    radial-gradient(ellipse clamp(115px, 24vw, 365px) 131px at 14% 34%, #000 15%, transparent 100%),
+    radial-gradient(ellipse clamp(70px, 13vw, 190px) 60px at 28% 37%, #000b 12%, transparent 100%),
     radial-gradient(ellipse clamp(42px, 7vw, 90px) 95px at 3% 39%, #0009, transparent 100%),
-    radial-gradient(ellipse clamp(30px, 5vw, 66px) 43px at 64% 48%, #000a 10%, transparent 100%),
-    radial-gradient(ellipse clamp(24px, 3vw, 46px) 30px at 68% 47%, #0009, transparent 100%),
-    radial-gradient(ellipse clamp(142px, 32vw, 505px) 198px at 84% 67%, #000 16%, transparent 100%),
-    radial-gradient(ellipse clamp(74px, 15vw, 225px) 167px at 66% 71%, #000b, transparent 100%),
-    radial-gradient(ellipse clamp(90px, 16vw, 220px) 102px at 100% 75%, #0009, transparent 100%),
+    radial-gradient(ellipse clamp(30px, 5vw, 66px) 43px at 88% 48%, #000a 10%, transparent 100%),
+    radial-gradient(ellipse clamp(24px, 3vw, 46px) 30px at 93% 46%, #0009, transparent 100%),
+    radial-gradient(ellipse clamp(142px, 32vw, 505px) 198px at 42% 67%, #000 16%, transparent 100%),
+    radial-gradient(ellipse clamp(74px, 15vw, 225px) 167px at 28% 72%, #000b, transparent 100%),
+    radial-gradient(ellipse clamp(90px, 16vw, 220px) 102px at 63% 64%, #0009, transparent 100%),
     radial-gradient(ellipse clamp(55px, 12vw, 155px) 98px at 18% 87%, #000d 12%, transparent 100%),
     radial-gradient(ellipse clamp(45px, 9vw, 110px) 55px at 9% 91%, #0009, transparent 100%),
-    radial-gradient(ellipse clamp(24px, 4vw, 55px) 34px at 34% 94%, #0009, transparent 100%);
+    radial-gradient(ellipse clamp(24px, 4vw, 55px) 34px at 80% 94%, #0009, transparent 100%);
   mask-size: 100% 1540px;
   mask-repeat: repeat-y;
 }
