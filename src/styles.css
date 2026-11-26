@@ -246,37 +246,37 @@ h3 {
   margin: 0;
   padding-inline-start: 30px;
 }
-.harmonograph-plot {
+.lorenz-plot {
   position: relative;
   margin: 0 auto;
-  max-width: 400px;
+  max-width: 290px;
   background-image: radial-gradient(#454e4066 0.7px, transparent 0.7px);
   background-size: 24px 24px;
 }
-.harmonograph-plot canvas {
+.lorenz-plot canvas {
   display: block;
   width: 100%;
   height: auto;
 }
-.harmonograph-initials {
+.lorenz-initials {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
   background: #111413;
   padding: 2px 10px 4px;
-  font: 2.5rem/1 var(--font-mono);
+  font: 1.9rem/1 var(--font-mono);
   letter-spacing: -0.1em;
   opacity: 0;
   transition: opacity 0.55s ease-out;
 }
-.harmonograph-initials[data-visible="true"] {
+.lorenz-initials[data-visible="true"] {
   opacity: 1;
 }
-.harmonograph-initials span {
+.lorenz-initials span {
   color: #bfd5a4;
 }
-.harmonograph-caption {
+.lorenz-caption {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   margin: 14px auto 0;
@@ -287,13 +287,19 @@ h3 {
   color: #a5eeaf;
   overflow-wrap: anywhere;
 }
-.harmonograph-caption span {
+.lorenz-caption > *,
+.lorenz-equations span {
   grid-area: 1 / 1;
 }
-.harmonograph-caption-size {
+.lorenz-equations > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+}
+.lorenz-equation-size {
   visibility: hidden;
 }
-.harmonograph-caption-label {
+.lorenz-caption-label {
+  align-self: center;
   color: var(--color-muted);
   animation: appear 0.45s ease-out both;
 }
