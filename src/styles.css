@@ -569,13 +569,39 @@ h3 {
   grid-template-columns: 1.1fr 1fr;
   gap: 50px;
   align-items: start;
-  margin-top: 26px;
 }
 .contact-layout h2 {
   font-size: clamp(2.5rem, 4.5vw, 4.3rem);
 }
-.contact-layout .mono {
-  font-size: 0.8125rem;
+.contact-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+.contact-links a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  height: 100%;
+  padding: 16px;
+  border: 1px solid #384034;
+  background: #181e19;
+  overflow-wrap: anywhere;
+}
+.contact-links a:hover,
+.contact-links a:focus-visible {
+  border-color: #bfd5a4;
+  background: #1b211b;
+}
+.contact-links .text-muted {
+  font-size: 0.875rem;
+}
+.contact-email {
+  grid-column: 1 / -1;
+}
+.contact-email a {
+  border-color: #6f8063;
 }
 .site-footer {
   border-top: 1px solid #384034;

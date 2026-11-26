@@ -279,40 +279,38 @@ function Home() {
           </p>
         </section>
       </section>
-      <section id="contato" className="contact-section shell">
-        <p className="eyebrow text-accent">Contato</p>
+      <section
+        id="contato"
+        className="contact-section shell"
+        aria-labelledby="contact-title"
+      >
         <div className="contact-layout">
-          <h2>
-            Vamos conversar
-            <br />
-            sobre software?
-          </h2>
           <div>
-            <div className="flex flex-wrap gap-3">
-              <a className="button button-primary" href={`mailto:${email}`}>
-                Enviar e-mail
-              </a>
-              <a
-                className="button button-secondary"
-                href={linkedin}
-                target="_blank"
-                rel="noreferrer"
-              >
-                LinkedIn
-              </a>
-              <a
-                className="button button-secondary"
-                href={github}
-                target="_blank"
-                rel="noreferrer"
-              >
-                GitHub
-              </a>
-            </div>
-            <a className="text-link mt-4 break-all" href={`mailto:${email}`}>
-              {email}
-            </a>
+            <p className="eyebrow text-accent">Contato</p>
+            <h2 id="contact-title" className="mt-3">
+              Vamos conversar?
+            </h2>
           </div>
+          <ul className="contact-links">
+            <li className="contact-email">
+              <a href={`mailto:${email}`}>
+                <span className="eyebrow text-accent">E-mail profissional</span>
+                <span>{email}</span>
+              </a>
+            </li>
+            <li>
+              <a href={linkedin} target="_blank" rel="noreferrer">
+                <span>LinkedIn</span>
+                <span className="text-muted">Luis Felipe</span>
+              </a>
+            </li>
+            <li>
+              <a href={github} target="_blank" rel="noreferrer">
+                <span>GitHub</span>
+                <span className="text-muted">@liphecodez</span>
+              </a>
+            </li>
+          </ul>
         </div>
       </section>
     </>
