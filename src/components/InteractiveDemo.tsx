@@ -1,8 +1,9 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useImperativeHandle, useRef, useState, type Ref } from "react";
 import type { Project } from "../data/projects";
 
 type WebDemo = Extract<Project["demo"], { kind: "web" }>;
 type Status = "idle" | "loading" | "ready" | "error";
+export type DemoControls = { openFullscreen: () => void };
 
 function embeddedStatus(document: Document, engine: WebDemo["engine"]) {
   if (!document.querySelector("canvas")) return "error";
@@ -23,10 +24,12 @@ export function InteractiveDemo({
   name,
   demo,
   source,
+  controlsRef,
 }: {
   name: string;
   demo: WebDemo;
   source?: string;
+  controlsRef?: Ref<DemoControls>;
 }) {
   const [status, setStatus] = useState<Status>("idle");
   const [documentLoaded, setDocumentLoaded] = useState(false);
@@ -36,6 +39,23 @@ export function InteractiveDemo({
   const startButton = useRef<HTMLButtonElement>(null);
   const restoreFocus = useRef(false);
   const active = status === "loading" || status === "ready";
+
+  useEffect(() => {
+    const frame = container.current;
+    const viewport = iframe.current;
+    if (demo.engine !== "raylib" || !frame || !viewport) return;
+
+    const observer = new ResizeObserver(([{ contentRect }]) => {
+      // Raylib needs the canvas to keep its logical size for pointer hit testing.
+      const scale = Math.min(
+        contentRect.width / viewport.offsetWidth,
+        contentRect.height / viewport.offsetHeight,
+      );
+      frame.style.setProperty("--demo-scale", String(scale));
+    });
+    observer.observe(frame);
+    return () => observer.disconnect();
+  }, [active, demo.engine]);
 
   useEffect(() => {
     if (status !== "loading") return;
@@ -89,10 +109,17 @@ export function InteractiveDemo({
       iframe.current?.focus({ preventScroll: true });
     } catch {
       setFullscreenMessage(
-        "Tela cheia indisponível. Você pode abrir a demonstração em outra aba.",
+        "Tela cheia indisponível. Use a demonstração nesta página.",
       );
     }
   }
+
+  useImperativeHandle(controlsRef, () => ({
+    openFullscreen() {
+      if (!active) start();
+      void fullscreen();
+    },
+  }));
 
   return (
     <div className="interactive-demo">

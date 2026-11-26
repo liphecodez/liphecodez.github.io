@@ -1,7 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { projects, type Project } from "./data/projects";
 import { ProjectGraphic } from "./components/ProjectGraphic";
 import { Demo } from "./components/Demo";
+import type { DemoControls } from "./components/InteractiveDemo";
 
 const github = "https://github.com/liphecodez";
 const projectPath = (project: Project) => `/projetos/${project.slug}/`;
@@ -275,6 +276,10 @@ function Home() {
 }
 
 function ProjectPage({ project }: { project: Project }) {
+  const demoControls = useRef<DemoControls>(null);
+  const opensFullscreen =
+    project.demo.kind === "web" && project.demo.engine === "raylib";
+
   return (
     <main id="conteudo" className="shell project-page">
       <a className="text-link back-link" href="/#projetos">
@@ -289,7 +294,21 @@ function ProjectPage({ project }: { project: Project }) {
         <p className="project-lead">{project.intro}</p>
         <Tags items={project.technologies} />
         <div className="flex flex-wrap gap-3 mt-7">
-          <a className="button button-primary" href="#demonstracao">
+          <a
+            className="button button-primary"
+            href="#demonstracao"
+            onClick={(event) => {
+              if (
+                opensFullscreen &&
+                !event.ctrlKey &&
+                !event.metaKey &&
+                !event.shiftKey &&
+                !event.altKey
+              ) {
+                demoControls.current?.openFullscreen();
+              }
+            }}
+          >
             Ver demonstração
           </a>
           {project.source && (
@@ -377,7 +396,7 @@ function ProjectPage({ project }: { project: Project }) {
             </ul>
             <p className="authorship-note">{project.development}</p>
           </section>
-          <Demo project={project} />
+          <Demo project={project} controlsRef={demoControls} />
           <section id="limitacoes" className="detail-section">
             <p className="eyebrow">Estado da apresentação</p>
             <h2>Limitações e próximos passos</h2>
