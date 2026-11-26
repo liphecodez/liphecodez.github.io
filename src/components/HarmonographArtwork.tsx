@@ -5,39 +5,7 @@ type Point = { x: number; y: number };
 const width = 400;
 const height = 310;
 const drawDuration = 1800;
-const equations = [
-  { text: "Tₙ₊₁ = Tₙ · L · inv(rev(Tₙ))", label: "Curva do Dragão" },
-  { text: "(x,y) = e^(−0.025t)(sin 2t, sin(3t + π/4))", label: "harmonógrafo" },
-];
-
-function dragonPoints(): Point[] {
-  let turns: number[] = [];
-  for (let fold = 0; fold < 9; fold++) {
-    turns = [...turns, 1, ...turns.slice().reverse().map((turn) => -turn)];
-  }
-
-  const points = [{ x: 0, y: 0 }, { x: 1, y: 0 }];
-  let dx = 1;
-  let dy = 0;
-  for (const turn of turns) {
-    [dx, dy] = [turn * dy, -turn * dx];
-    const last = points[points.length - 1];
-    points.push({ x: last.x + dx, y: last.y + dy });
-  }
-
-  const xs = points.map(({ x }) => x);
-  const ys = points.map(({ y }) => y);
-  const left = Math.min(...xs);
-  const right = Math.max(...xs);
-  const top = Math.min(...ys);
-  const bottom = Math.max(...ys);
-  const scale = Math.min((width - 48) / (right - left), (height - 48) / (bottom - top));
-
-  return points.map(({ x, y }) => ({
-    x: width / 2 + (x - (left + right) / 2) * scale,
-    y: height / 2 + (y - (top + bottom) / 2) * scale,
-  }));
-}
+const equation = "(x,y) = e^(−0.025t)(sin 2t, sin(3t + π/4))";
 
 function harmonographPoints(): Point[] {
   return Array.from({ length: 1201 }, (_, index) => {
@@ -60,7 +28,7 @@ function trace(context: CanvasRenderingContext2D, points: Point[], progress: num
   context.stroke();
 }
 
-export function DragonArtwork() {
+export function HarmonographArtwork() {
   const figure = useRef<HTMLElement>(null);
   const canvas = useRef<HTMLCanvasElement>(null);
   const [characters, setCharacters] = useState(0);
@@ -72,7 +40,6 @@ export function DragonArtwork() {
     if (!element || !context) return;
 
     const drawing = context;
-    const dragon = dragonPoints();
     const harmonograph = harmonographPoints();
     const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
     drawing.setTransform(2, 0, 0, 2, 0, 0);
@@ -80,12 +47,9 @@ export function DragonArtwork() {
 
     function draw(progress: number) {
       drawing.clearRect(0, 0, width, height);
-      drawing.strokeStyle = "#5d976953";
-      drawing.lineWidth = 0.8;
+      drawing.strokeStyle = "#a5eeafa6";
+      drawing.lineWidth = 1.15;
       trace(drawing, harmonograph, progress);
-      drawing.strokeStyle = "#a5eeaf";
-      drawing.lineWidth = 1.3;
-      trace(drawing, dragon, progress);
     }
 
     let frame: number;
@@ -144,31 +108,30 @@ export function DragonArtwork() {
   return (
     <figure
       ref={figure}
-      className="hero-aside dragon-artwork"
-      aria-label="Curva do Dragão e harmonógrafo"
+      className="hero-aside harmonograph-artwork"
+      aria-label="Harmonógrafo"
     >
-      <div className="dragon-plot" aria-hidden="true">
+      <div className="harmonograph-plot" aria-hidden="true">
         <canvas ref={canvas} width={width * 2} height={height * 2} />
         <span
-          className="dragon-initials"
+          className="harmonograph-initials"
           data-visible={finished || characters >= 9}
         >
           lf<span>.</span>
         </span>
       </div>
-      <figcaption className="dragon-caption" aria-hidden="true">
-        {equations.map(({ text, label }) => (
-          <div className="dragon-caption-line" key={label}>
-            <span className="dragon-caption-size">{text}</span>
-            {finished ? (
-              <span className="dragon-caption-label">{label}</span>
-            ) : (
-              <span className="terminal-heading-typed" data-typing={characters < text.length}>
-                {text.slice(0, characters)}
-              </span>
-            )}
-          </div>
-        ))}
+      <figcaption className="harmonograph-caption" aria-hidden="true">
+        <span className="harmonograph-caption-size">{equation}</span>
+        {finished ? (
+          <span className="harmonograph-caption-label">harmonógrafo</span>
+        ) : (
+          <span
+            className="terminal-heading-typed"
+            data-typing={characters < equation.length}
+          >
+            {equation.slice(0, characters)}
+          </span>
+        )}
       </figcaption>
     </figure>
   );

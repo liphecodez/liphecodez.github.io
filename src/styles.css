@@ -246,19 +246,19 @@ h3 {
   margin: 0;
   padding-inline-start: 30px;
 }
-.dragon-plot {
+.harmonograph-plot {
   position: relative;
   margin: 0 auto;
   max-width: 400px;
   background-image: radial-gradient(#454e4066 0.7px, transparent 0.7px);
   background-size: 24px 24px;
 }
-.dragon-plot canvas {
+.harmonograph-plot canvas {
   display: block;
   width: 100%;
   height: auto;
 }
-.dragon-initials {
+.harmonograph-initials {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -270,34 +270,30 @@ h3 {
   opacity: 0;
   transition: opacity 0.55s ease-out;
 }
-.dragon-initials[data-visible="true"] {
+.harmonograph-initials[data-visible="true"] {
   opacity: 1;
 }
-.dragon-initials span {
+.harmonograph-initials span {
   color: #bfd5a4;
 }
-.dragon-caption {
+.harmonograph-caption {
   display: grid;
-  gap: 6px;
+  grid-template-columns: minmax(0, 1fr);
   margin: 14px auto 0;
   text-align: center;
   font-family: var(--font-mono);
   font-size: 0.8rem;
   line-height: 1.5;
   color: #a5eeaf;
-}
-.dragon-caption-line {
-  display: grid;
-  grid-template-columns: minmax(0, 1fr);
   overflow-wrap: anywhere;
 }
-.dragon-caption-line span {
+.harmonograph-caption span {
   grid-area: 1 / 1;
 }
-.dragon-caption-size {
+.harmonograph-caption-size {
   visibility: hidden;
 }
-.dragon-caption-label {
+.harmonograph-caption-label {
   color: var(--color-muted);
   animation: appear 0.45s ease-out both;
 }
