@@ -202,7 +202,8 @@ function Home() {
           <div className="interests">
             <span className="eyebrow">Áreas de interesse</span>
             <p>
-              Backend / Segurança de APIs / Escalabilidade / Ciência de dados
+              Desenvolvimento de software / Segurança / Arquitetura de
+              sistemas / Ciência de dados
             </p>
           </div>
         </div>
