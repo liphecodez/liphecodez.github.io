@@ -10,6 +10,7 @@ export type Project = {
   short: string;
   intro: string;
   objective: string;
+  context?: string;
   technologies: string[];
   features: string[];
   architecture: { title: string; text: string }[];
@@ -39,6 +40,8 @@ export const projects: Project[] = [
       "Sistema de Gestão Institucional desenvolvido em equipe para o NCI Idade Dourada de Pinheiros, como Projeto Integrador acadêmico.",
     objective:
       "Organizar participantes, atividades e frequência, integrando essas informações ao processamento de indicadores mensais do FMR.",
+    context:
+      "Uma mudança na metodologia do Projeto Integrador exigiu que nossa equipe trocasse de comunidade e recomeçasse o levantamento. Com cerca de dois meses até a entrega, entrevistamos a nova instituição e levantamos requisitos funcionais, não funcionais e regras de negócio. Restaram cerca de duas semanas para implementar. Como já tínhamos priorizado os problemas e planejado a arquitetura com base nas entrevistas, conseguimos entregar enquanto aprendíamos Django, Alpine.js, Bootstrap e a publicar o sistema.",
     technologies: [
       "Python",
       "Django",

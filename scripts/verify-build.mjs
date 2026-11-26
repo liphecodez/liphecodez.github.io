@@ -10,10 +10,10 @@ const escapeHtml = (value) =>
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;");
 const pages = [
-  { path: "/", title: "Luis Bernardo — Desenvolvimento de software" },
+  { path: "/", title: "Luis Felipe — Desenvolvimento de software" },
   ...projects.map((project) => ({
     path: `/projetos/${project.slug}/`,
-    title: `${project.name} — Luis Bernardo`,
+    title: `${project.name} — Luis Felipe`,
     description: project.intro,
   })),
 ];

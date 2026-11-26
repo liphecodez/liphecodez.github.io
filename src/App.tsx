@@ -5,6 +5,8 @@ import { Demo } from "./components/Demo";
 import type { DemoControls } from "./components/InteractiveDemo";
 
 const github = "https://github.com/liphecodez";
+const linkedin = "https://www.linkedin.com/in/luis-felipe-lima-bernardo-43691b281/";
+const email = "luis.felipe.lima.bernardo@gmail.com";
 const projectPath = (project: Project) => `/projetos/${project.slug}/`;
 
 function Tags({ items }: { items: string[] }) {
@@ -23,9 +25,9 @@ function Header({ home }: { home: boolean }) {
       <a
         className="wordmark"
         href="/"
-        aria-label="Luis Bernardo, página inicial"
+        aria-label="Luis Felipe, página inicial"
       >
-        lb<span>.</span>
+        lf<span>.</span>
       </a>
       <nav aria-label="Navegação principal">
         <a href={home ? "#projetos" : "/#projetos"}>Projetos</a>
@@ -51,17 +53,16 @@ function Home() {
       <section className="hero shell" aria-labelledby="hero-title">
         <div className="hero-copy">
           <p className="eyebrow">
-            <span className="small-line" /> Luis Bernardo · Portfólio
+            <span className="small-line" /> Luis Felipe · Portfólio
           </p>
           <h1 id="hero-title">
-            Software com
-            <br />
-            lógica, contexto
-            <br />e <span>intenção.</span>
+            Foco em <span>backend.</span>
           </h1>
           <p className="hero-description">
-            Estudante de Análise e Desenvolvimento de Sistemas na Fatec. Exploro
-            a construção de software, dos algoritmos às aplicações.
+            Estudo Análise e Desenvolvimento de Sistemas na Fatec e busco um
+            estágio em backend. Uso Python, Docker e bancos relacionais como
+            PostgreSQL para estudar como decisões de arquitetura afetam a
+            segurança, o desempenho e a capacidade de um sistema crescer.
           </p>
           <div className="flex flex-wrap gap-3">
             <a className="button button-primary" href="#projetos">
@@ -80,7 +81,7 @@ function Home() {
             <div className="orbit-axis axis-x" />
             <div className="orbit-axis axis-y" />
             <span className="orbit-center">
-              lb<span>.</span>
+              lf<span>.</span>
             </span>
             <span className="orbit-label">ideia → lógica → software</span>
           </div>
@@ -91,7 +92,7 @@ function Home() {
           </p>
         </div>
         <div className="hero-bottom">
-          <span>Software · Algoritmos · Engenharia · IA</span>
+          <span>Backend · Segurança · Escalabilidade</span>
           <span>
             Conheça o trabalho abaixo <span aria-hidden="true">↓</span>
           </span>
@@ -183,25 +184,25 @@ function Home() {
         </div>
         <div className="about-copy">
           <p>
-            Sou Luis Bernardo, estudante de Análise e Desenvolvimento de
-            Sistemas na Fatec, com interesse em desenvolvimento de software,
-            algoritmos, engenharia de software e inteligência artificial.
+            Quando encontro um conceito novo, procuro um problema pequeno em
+            que possa aplicá-lo. Assim consigo estudar a teoria, implementar
+            uma solução e observar como ela se comporta na prática.
           </p>
           <p className="text-muted">
-            Minha prática passa por sistemas web, programação em C e
-            desenvolvimento de jogos. Neste portfólio, apresento o contexto de
-            cada projeto, as escolhas técnicas e o que desenvolvi
-            individualmente.
+            Nos meus projetos, dou atenção ao levantamento de requisitos e às
+            boas práticas de engenharia desde as primeiras decisões de
+            arquitetura. Quero me aprofundar em backend e, no futuro, me
+            dedicar também à ciência de dados.
           </p>
           <p className="text-muted">
-            Busco uma oportunidade de estágio para aprofundar esses
-            conhecimentos e contribuir com uma equipe de desenvolvimento.
+            Também gosto de matemática e física. Um dos próximos conceitos
+            que quero estudar é telemetria. Pretendo experimentar como
+            aplicá-la em um sistema.
           </p>
           <div className="interests">
             <span className="eyebrow">Áreas de interesse</span>
             <p>
-              Desenvolvimento de software / Algoritmos / Engenharia de software
-              / Inteligência artificial
+              Backend / Segurança de APIs / Escalabilidade / Ciência de dados
             </p>
           </div>
         </div>
@@ -244,6 +245,35 @@ function Home() {
             </a>
           ))}
         </div>
+        <section className="mt-10" aria-labelledby="study-projects-title">
+          <h3 id="study-projects-title">Projetos de estudo</h3>
+          <div className="secondary-projects">
+            <article className="secondary-project architecture-list">
+              <div>
+                <h4 className="mb-2">Sistema de academia · Segurança de APIs</h4>
+                <p>
+                  Implementei autorização por recurso na rota de faturas. A API
+                  verifica se a fatura pertence ao usuário autenticado antes
+                  de liberar o acesso. Testei abuso de requisições, apliquei
+                  limites de frequência e experimentei um fluxo no pipeline
+                  para alertar sobre vulnerabilidades e manter as dependências
+                  atualizadas.
+                </p>
+              </div>
+            </article>
+            <article className="secondary-project architecture-list">
+              <div>
+                <h4 className="mb-2">Sistema de mercado · Desempenho</h4>
+                <p>
+                  Simulei consultas em massa ao banco e usei Redis para
+                  melhorar o desempenho. Para resolver timeouts durante o
+                  processamento de arquivos pesados, movi o trabalho para uma
+                  fila em segundo plano com notificação de conclusão.
+                </p>
+              </div>
+            </article>
+          </div>
+        </section>
       </section>
       <section id="contato" className="contact-section shell">
         <p className="eyebrow text-accent">Contato</p>
@@ -255,19 +285,32 @@ function Home() {
           </h2>
           <div>
             <p className="text-muted">
-              Meu código e meus projetos estão no GitHub.
-              <br />
-              Esse é meu canal público por aqui.
+              Estou aberto a conversar sobre oportunidades de estágio em backend.
             </p>
-            <a
-              className="button button-primary mt-6"
-              href={github}
-              target="_blank"
-              rel="noreferrer"
-            >
-              Encontrar no GitHub
+            <div className="flex flex-wrap gap-3 mt-6">
+              <a className="button button-primary" href={`mailto:${email}`}>
+                Enviar e-mail
+              </a>
+              <a
+                className="button button-secondary"
+                href={linkedin}
+                target="_blank"
+                rel="noreferrer"
+              >
+                LinkedIn
+              </a>
+              <a
+                className="button button-secondary"
+                href={github}
+                target="_blank"
+                rel="noreferrer"
+              >
+                GitHub
+              </a>
+            </div>
+            <a className="text-link mt-4 break-all" href={`mailto:${email}`}>
+              {email}
             </a>
-            <p className="mono text-muted mt-4">@liphecodez</p>
           </div>
         </div>
       </section>
@@ -341,6 +384,7 @@ function ProjectPage({ project }: { project: Project }) {
             <p className="eyebrow">Contexto</p>
             <h2>Problema e objetivo</h2>
             <p>{project.objective}</p>
+            {project.context && <p className="mt-4">{project.context}</p>}
             {project.slug === "nci" && (
               <div className="scope-block">
                 <p className="eyebrow">Dimensão do escopo documentado</p>
@@ -435,10 +479,10 @@ export default function App() {
   const home = path === "" || path === "/index.html";
   useEffect(() => {
     if (!home && !project)
-      document.title = "Página não encontrada — Luis Bernardo";
+      document.title = "Página não encontrada — Luis Felipe";
     // O HTML gerado já contém os metadados de cada projeto; este efeito também cobre o dev server.
     if (project) {
-      document.title = `${project.name} — Luis Bernardo`;
+      document.title = `${project.name} — Luis Felipe`;
       document
         .querySelector('meta[name="description"]')
         ?.setAttribute("content", project.intro);
@@ -470,7 +514,7 @@ export default function App() {
       )}
       <footer className="site-footer shell">
         <a className="footer-name" href="/">
-          Luis Bernardo<span className="text-accent">.</span>
+          Luis Felipe<span className="text-accent">.</span>
         </a>
         <p>Desenvolvido com React e TypeScript.</p>
         <a href={github} target="_blank" rel="noreferrer">

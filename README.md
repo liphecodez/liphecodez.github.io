@@ -1,4 +1,4 @@
-# Luis Bernardo — Portfólio
+# Luis Felipe — Portfólio
 
 Portfólio estático em português, com React, TypeScript, Vite e Tailwind CSS. Publicação prevista em **https://liphecodez.github.io/**. Sem backend, banco de dados ou serviços de rastreamento.
 
@@ -116,4 +116,4 @@ O componente `InteractiveDemo` só monta o iframe após clicar em **Iniciar demo
 - [Tailwind com Vite](https://tailwindcss.com/docs/installation/using-vite)
 - [Workflows do GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)
 
-As informações sobre autoria, contribuições e NCI foram fornecidas por Luis Bernardo. O guia de estudo é local e ignorado pelo Git.
+As informações sobre autoria, contribuições e NCI foram fornecidas por Luis Felipe. O guia de estudo é local e ignorado pelo Git.
