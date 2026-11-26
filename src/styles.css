@@ -845,6 +845,13 @@ h3 {
   width: 100%;
   height: auto;
 }
+.media-gallery a {
+  display: block;
+  border: 1px solid #384034;
+}
+.media-gallery a:hover {
+  border-color: #bfd5a4;
+}
 .media-gallery figcaption {
   font-size: 0.875rem;
   color: #a5ada6;

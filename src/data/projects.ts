@@ -2,6 +2,8 @@ export type Media = {
   kind: "image" | "video";
   src: string;
   description: string;
+  width?: number;
+  height?: number;
 };
 export type Project = {
   slug: string;
@@ -29,6 +31,35 @@ export type Project = {
       };
   media: Media[];
 };
+
+const nciCaptures = [
+  ["acesso", "Tela de entrada do sistema institucional."],
+  ["painel-inicial", "Painel inicial com acesso aos módulos de gestão e frequência."],
+  [
+    "gestao-de-participantes",
+    "Ficha de participante com dados cadastrais, situação social e histórico de entradas e saídas.",
+  ],
+  [
+    "gestao-de-atividades",
+    "Cadastro e listagem de atividades com categorias, horários e inscrições.",
+  ],
+  [
+    "registro-diario",
+    "Registro diário de presença com seleção da atividade, horário e participantes inscritos.",
+  ],
+  [
+    "frequencia-mensal",
+    "Consulta mensal com totais de presença e ausência e detalhamento por atividade.",
+  ],
+  [
+    "indicadores-fmr",
+    "Indicadores do FMR por faixa etária e desligamentos por motivo.",
+  ],
+  [
+    "gestao-de-colaboradores",
+    "Gestão de colaboradores com busca, perfis e situação das contas.",
+  ],
+] as const;
 
 // Fontes: informações fornecidas pelo autor e repositórios públicos indicados abaixo.
 export const projects: Project[] = [
@@ -91,14 +122,20 @@ export const projects: Project[] = [
       "Integração dessas funcionalidades com os demais módulos.",
     ],
     limitations:
-      "Este portfólio apresenta o escopo e as contribuições declaradas pelo autor. Não há demonstração pública nem código-fonte disponibilizado aqui. As capturas e os vídeos dependem de revisão para não expor dados institucionais ou pessoais.",
+      "A galeria apresenta a interface do sistema com dados fictícios. O acesso pelo portfólio se limita às capturas.",
     development:
       "Desenvolvimento acadêmico em equipe, com assistência de inteligência artificial.",
     demo: {
       kind: "media",
-      note: "Capturas e vídeos reais serão adicionados após revisão de privacidade. Nenhuma tela do sistema foi simulada.",
+      note: "As capturas mostram a interface do NCI preenchida com dados fictícios. Selecione uma imagem para abri-la em tamanho original em outra aba.",
     },
-    media: [],
+    media: nciCaptures.map(([name, description]) => ({
+      kind: "image",
+      src: `/media/nci/${name}.webp`,
+      description,
+      width: 1920,
+      height: 1080,
+    })),
   },
   {
     slug: "algorithm-visualizer",

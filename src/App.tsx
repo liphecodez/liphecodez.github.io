@@ -333,7 +333,7 @@ function ProjectPage({ project }: { project: Project }) {
               }
             }}
           >
-            Ver demonstração
+            {project.demo.kind === "media" ? "Ver capturas" : "Ver demonstração"}
           </a>
           {project.source && (
             <a
@@ -356,7 +356,9 @@ function ProjectPage({ project }: { project: Project }) {
             <a href="#funcionalidades">Funcionalidades</a>
             <a href="#arquitetura">Arquitetura e conceitos</a>
             <a href="#contribuicoes">Minha contribuição</a>
-            <a href="#demonstracao">Demonstração</a>
+            <a href="#demonstracao">
+              {project.demo.kind === "media" ? "Telas do sistema" : "Demonstração"}
+            </a>
             <a href="#limitacoes">Limitações</a>
           </nav>
         </aside>
