@@ -386,7 +386,7 @@ function ProjectPage({ project }: { project: Project }) {
             {project.context && <p className="mt-4">{project.context}</p>}
             {project.slug === "nci" && (
               <div className="scope-block">
-                <p className="eyebrow">Dimensão do escopo documentado</p>
+                <p className="eyebrow">Escopo do MVP</p>
                 <dl className="scope-stats">
                   <div>
                     <dt>50</dt>
@@ -402,8 +402,9 @@ function ProjectPage({ project }: { project: Project }) {
                   </div>
                 </dl>
                 <p className="text-muted text-sm">
-                  Números da especificação. Não são métricas de qualidade nem
-                  certificação de implementação integral.
+                  A equipe implementou todos os requisitos funcionais e não
+                  funcionais e todas as regras de negócio do MVP. Os números
+                  descrevem a dimensão desse escopo.
                 </p>
               </div>
             )}
@@ -444,6 +445,7 @@ function ProjectPage({ project }: { project: Project }) {
             <p className="eyebrow">Estado da apresentação</p>
             <h2>Limitações e próximos passos</h2>
             <p>{project.limitations}</p>
+            {project.nextSteps && <p className="mt-4">{project.nextSteps}</p>}
             {!project.source && (
               <p className="mt-5 text-muted">
                 Código-fonte não disponibilizado publicamente neste portfólio.
