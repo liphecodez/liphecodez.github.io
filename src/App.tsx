@@ -2,11 +2,13 @@ import { useEffect, useRef } from "react";
 import { projects, type Project } from "./data/projects";
 import { ProjectGraphic } from "./components/ProjectGraphic";
 import { Demo } from "./components/Demo";
+import { TerminalHeading } from "./components/TerminalHeading";
 import type { DemoControls } from "./components/InteractiveDemo";
 
 const github = "https://github.com/liphecodez";
 const linkedin = "https://www.linkedin.com/in/luis-felipe-lima-bernardo-43691b281/";
 const email = "luis.felipe.lima.bernardo@gmail.com";
+const heroIntro = ["Olá?", "hello?", "Hello world!"] as const;
 const projectPath = (project: Project) => `/projetos/${project.slug}/`;
 
 function Tags({ items }: { items: string[] }) {
@@ -55,14 +57,17 @@ function Home() {
           <p className="eyebrow">
             <span className="small-line" /> Luis Felipe · Portfólio
           </p>
-          <h1 id="hero-title">
-            Foco em <span>backend.</span>
-          </h1>
+          <TerminalHeading
+            as="h1"
+            id="hero-title"
+            text="Olá, eu sou o Luis Felipe!"
+            intro={heroIntro}
+          />
           <p className="hero-description">
-            Estudo Análise e Desenvolvimento de Sistemas na Fatec. Uso Python,
-            Docker e bancos relacionais como PostgreSQL para estudar como
-            decisões de arquitetura afetam a segurança, o desempenho e a
-            capacidade de um sistema crescer.
+            Estudo Análise e Desenvolvimento de Sistemas na Fatec, com foco em
+            backend. Uso Python, Docker e PostgreSQL para estudar como decisões
+            de arquitetura afetam a segurança, o desempenho e a capacidade de
+            um sistema crescer.
           </p>
           <div className="flex flex-wrap gap-3">
             <a className="button button-primary" href="#projetos">
@@ -106,9 +111,7 @@ function Home() {
         <div className="section-heading section-heading-row">
           <div>
             <p className="eyebrow">Da teoria à implementação</p>
-            <h2 id="projects-title">
-              Projetos selecionados<span className="text-accent">.</span>
-            </h2>
+            <TerminalHeading id="projects-title" text="Projetos selecionados." />
           </div>
           <p>
             Contextos diferentes.{" "}
@@ -176,11 +179,7 @@ function Home() {
       <section id="sobre" className="about-section shell">
         <div>
           <p className="eyebrow">Sobre mim</p>
-          <h2>
-            Entender a lógica.
-            <br />
-            <span className="text-muted">Construir a solução.</span>
-          </h2>
+          <TerminalHeading text="Entender a lógica. Construir a solução." />
         </div>
         <div className="about-copy">
           <p>
@@ -211,7 +210,7 @@ function Home() {
       <section className="skills-section shell" aria-labelledby="skills-title">
         <div className="section-heading">
           <p className="eyebrow">Conhecimentos em prática</p>
-          <h2 id="skills-title">O código como evidência.</h2>
+          <TerminalHeading id="skills-title" text="O código como evidência." />
           <p className="text-muted mt-4 max-w-xl">
             Competências relacionadas ao trabalho nos projetos. Cada link leva
             ao contexto em que foram aplicadas.
@@ -287,9 +286,11 @@ function Home() {
         <div className="contact-layout">
           <div>
             <p className="eyebrow text-accent">Contato</p>
-            <h2 id="contact-title" className="mt-3">
-              Vamos conversar?
-            </h2>
+            <TerminalHeading
+              id="contact-title"
+              className="mt-3"
+              text="Vamos conversar?"
+            />
           </div>
           <ul className="contact-links">
             <li className="contact-email">
@@ -329,10 +330,7 @@ function ProjectPage({ project }: { project: Project }) {
       </a>
       <header className="project-heading">
         <p className="eyebrow text-accent">{project.category}</p>
-        <h1>
-          {project.name}
-          <span className="text-accent">.</span>
-        </h1>
+        <TerminalHeading as="h1" text={`${project.name}.`} />
         <p className="project-lead">{project.intro}</p>
         <Tags items={project.technologies} />
         <div className="flex flex-wrap gap-3 mt-7">
@@ -381,7 +379,7 @@ function ProjectPage({ project }: { project: Project }) {
         <div className="detail-content">
           <section id="objetivo" className="detail-section">
             <p className="eyebrow">Contexto</p>
-            <h2>Problema e objetivo</h2>
+            <TerminalHeading text="Problema e objetivo" />
             <p>{project.objective}</p>
             {project.context && <p className="mt-4">{project.context}</p>}
             {project.slug === "nci" && (
@@ -411,7 +409,7 @@ function ProjectPage({ project }: { project: Project }) {
           </section>
           <section id="funcionalidades" className="detail-section">
             <p className="eyebrow">O que o projeto contempla</p>
-            <h2>Funcionalidades</h2>
+            <TerminalHeading text="Funcionalidades" />
             <ul className="feature-list">
               {project.features.map((feature) => (
                 <li key={feature}>{feature}</li>
@@ -420,7 +418,7 @@ function ProjectPage({ project }: { project: Project }) {
           </section>
           <section id="arquitetura" className="detail-section">
             <p className="eyebrow">Como foi pensado</p>
-            <h2>Arquitetura e conceitos</h2>
+            <TerminalHeading text="Arquitetura e conceitos" />
             <div className="architecture-list">
               {project.architecture.map((item) => (
                 <div key={item.title}>
@@ -432,7 +430,7 @@ function ProjectPage({ project }: { project: Project }) {
           </section>
           <section id="contribuicoes" className="detail-section">
             <p className="eyebrow">Autoria e participação</p>
-            <h2>Minha contribuição</h2>
+            <TerminalHeading text="Minha contribuição" />
             <ul className="feature-list">
               {project.contributions.map((item) => (
                 <li key={item}>{item}</li>
@@ -443,7 +441,7 @@ function ProjectPage({ project }: { project: Project }) {
           <Demo project={project} controlsRef={demoControls} />
           <section id="limitacoes" className="detail-section">
             <p className="eyebrow">Estado da apresentação</p>
-            <h2>Limitações e próximos passos</h2>
+            <TerminalHeading text="Limitações e próximos passos" />
             <p>{project.limitations}</p>
             {project.nextSteps && <p className="mt-4">{project.nextSteps}</p>}
             {!project.source && (
@@ -504,7 +502,7 @@ export default function App() {
       ) : (
         <main id="conteudo" className="shell not-found">
           <p className="eyebrow">Erro 404</p>
-          <h1>Página não encontrada.</h1>
+          <TerminalHeading as="h1" text="Página não encontrada." />
           <p className="text-muted">
             O endereço pode ter mudado. Os projetos continuam na página inicial.
           </p>

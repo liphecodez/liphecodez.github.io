@@ -1,5 +1,6 @@
 import type { Ref } from "react";
 import type { Project } from "../data/projects";
+import { TerminalHeading } from "./TerminalHeading";
 import { InteractiveDemo, type DemoControls } from "./InteractiveDemo";
 
 export function Demo({
@@ -13,7 +14,7 @@ export function Demo({
     <section id="demonstracao" className="detail-section">
       <div className="section-heading">
         <span className="eyebrow">Veja o projeto</span>
-        <h2>Demonstração</h2>
+        <TerminalHeading text="Demonstração" />
       </div>
       {project.demo.kind === "web" ? (
         <InteractiveDemo

@@ -108,6 +108,33 @@ h2 {
 h3 {
   font-size: 1.5rem;
 }
+.terminal-heading {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  font-family: var(--font-mono);
+  overflow-wrap: anywhere;
+}
+.terminal-heading > span {
+  grid-area: 1 / 1;
+}
+.terminal-heading-final {
+  visibility: hidden;
+}
+.terminal-heading-typed[data-typing="true"]::after {
+  content: "";
+  position: absolute;
+  width: 0.45em;
+  height: 0.075em;
+  margin: 0.92em 0 0 0.07em;
+  background: currentColor;
+  color: #7fe29a;
+  animation: terminal-caret 0.9s steps(1) infinite;
+}
+@keyframes terminal-caret {
+  50% {
+    opacity: 0;
+  }
+}
 .shell {
   width: min(1184px, calc(100% - 112px));
   margin-inline: auto;
@@ -166,16 +193,10 @@ h3 {
   padding-top: 79px;
 }
 .hero h1 {
-  font-size: clamp(3.6rem, 6.5vw, 6rem);
+  font-size: clamp(2.8rem, 5.5vw, 5.2rem);
   line-height: 1.04;
   letter-spacing: -0.065em;
   margin-top: 23px;
-}
-.hero h1 > span {
-  font-family: Georgia, serif;
-  font-style: italic;
-  font-weight: 400;
-  color: #bfd5a4;
 }
 .hero .eyebrow {
   display: flex;
@@ -904,7 +925,7 @@ h3 {
     grid-template-columns: 1fr;
   }
   .hero h1 {
-    font-size: clamp(3.5rem, 12vw, 5.5rem);
+    font-size: clamp(2.45rem, 8vw, 4.4rem);
   }
   .hero-aside {
     display: none;
@@ -1017,6 +1038,12 @@ h3 {
   }
 }
 @media (prefers-reduced-motion: reduce) {
+  .terminal-heading-final {
+    visibility: visible;
+  }
+  .terminal-heading-typed {
+    visibility: hidden;
+  }
   html {
     scroll-behavior: auto;
   }
