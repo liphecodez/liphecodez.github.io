@@ -511,15 +511,6 @@ export default function App() {
           </a>
         </main>
       )}
-      <footer className="site-footer shell">
-        <a className="footer-name" href="/">
-          Luis Felipe<span className="text-accent">.</span>
-        </a>
-        <p>Desenvolvido com React e TypeScript.</p>
-        <a href={github} target="_blank" rel="noreferrer">
-          GitHub
-        </a>
-      </footer>
     </>
   );
 }
