@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { projects, type Project } from "./data/projects";
 import { ProjectGraphic } from "./components/ProjectGraphic";
 import { Demo } from "./components/Demo";
-import { LorenzArtwork } from "./components/LorenzArtwork";
+import { LissajousArtwork } from "./components/LissajousArtwork";
 import { TerminalHeading } from "./components/TerminalHeading";
 import type { DemoControls } from "./components/InteractiveDemo";
 
@@ -79,7 +79,7 @@ function Home() {
             </a>
           </div>
         </div>
-        <LorenzArtwork />
+        <LissajousArtwork />
         <div className="hero-bottom">
           <span>Backend · Segurança · Escalabilidade</span>
           <span>

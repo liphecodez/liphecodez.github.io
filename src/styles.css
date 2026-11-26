@@ -246,19 +246,19 @@ h3 {
   margin: 0;
   padding-inline-start: 30px;
 }
-.lorenz-plot {
+.hero-curve-plot {
   position: relative;
   margin: 0 auto;
   max-width: 290px;
   background-image: radial-gradient(#454e4066 0.7px, transparent 0.7px);
   background-size: 24px 24px;
 }
-.lorenz-plot canvas {
+.hero-curve-plot canvas {
   display: block;
   width: 100%;
   height: auto;
 }
-.lorenz-initials {
+.hero-curve-initials {
   position: absolute;
   left: 50%;
   top: 50%;
@@ -270,13 +270,13 @@ h3 {
   opacity: 0;
   transition: opacity 0.55s ease-out;
 }
-.lorenz-initials[data-visible="true"] {
+.hero-curve-initials[data-visible="true"] {
   opacity: 1;
 }
-.lorenz-initials span {
+.hero-curve-initials span {
   color: #bfd5a4;
 }
-.lorenz-caption {
+.hero-curve-caption {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   margin: 14px auto 0;
@@ -287,18 +287,18 @@ h3 {
   color: #a5eeaf;
   overflow-wrap: anywhere;
 }
-.lorenz-caption > *,
-.lorenz-equations span {
+.hero-curve-caption > *,
+.hero-curve-equations span {
   grid-area: 1 / 1;
 }
-.lorenz-equations > div {
+.hero-curve-equations > div {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
 }
-.lorenz-equation-size {
+.hero-curve-equation-size {
   visibility: hidden;
 }
-.lorenz-caption-label {
+.hero-curve-caption-label {
   align-self: center;
   color: var(--color-muted);
   animation: appear 0.45s ease-out both;
